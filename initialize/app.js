@@ -102,3 +102,82 @@ return (
 };
 
 export default person;
+
+
+*************************************************************************************************************
+USE OF CHANGED EVENT LISTENER
+
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person.js';
+
+class App extends Component {
+  state={
+    persons:[
+      {name: "Mayank", age:22},
+      {name: "Nandani", age:20},
+      {name: "shivam",age: 21}
+    ]
+  }
+
+  switchNameHandler = (newName) =>{
+    // console.log("Was Clicked"); 
+    this.setState({
+      persons:[
+        {name: newName, age:22},
+        {name: "Nandani", age:20},
+        {name: "shivam",age: 36}
+      ]
+    })
+  }
+
+  nameChangedHandler = (event) =>{
+    this.setState({
+      persons:[
+        {name: event.target.value, age:22},
+        {name: event.target.value, age:20},
+        {name: event.target.value,age: 36}
+      ]
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+       <h1> Hi, I'm a React App</h1>
+       <p>This is really working!!</p>
+       <button onClick={() =>this.switchNameHandler("Maxmillian!!")}>Switch name</button>
+       <Person name={this.state.persons[0].name} 
+       age={this.state.persons[0].age}
+      //  click={this.switchNameHandler}
+       changed={this.nameChangedHandler}/>
+       <Person name={this.state.persons[1].name} 
+       age={this.state.persons[1].age}
+      //  click={this.switchNameHandler}
+       changed={this.nameChangedHandler}>My hobbies: Racing</Person>
+       <Person name={this.state.persons[2].name}
+        age={this.state.persons[2].age}
+        changed={this.nameChangedHandler}/> 
+      </div>
+    );
+    // return React.createElement('div',null,React.createElement('h1',{className:'App'},'DOES IT WORK??'));
+  }
+}
+
+export default App;
+
+
+
+import React from 'react';
+
+const person =(props)=>{
+return (
+    <div>
+        <p onClick={props.click}>I am {props.name} and I am {props.age} years old.</p>
+        <p> {props.children} </p>
+        <input type="text" onChange={props.changed} />
+    </div>
+)
+};
+
+export default person;
