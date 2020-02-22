@@ -67,3 +67,38 @@ class App extends Component{
 };
 export default App;
 ###############################
+
+
+ Pass a username of your choice to useroutput via props and idsplay it here
+ ##########################################################################
+ IN APP.JS FILE
+ <div className="App">
+          <UserInput/>
+          <UserOutput userName="Mayank"/>
+          <UserOutput userName="Nandani"/>
+          <UserOutput userName="Shivam"/>
+        </div>
+
+
+IN USEROUTPUT.JS FILE
+########################################
+import React from 'react';
+
+const UserOutput = (props) => {
+    return(
+        <div>
+            <p> Username: {props.userName}</p>
+            <p> I should be over written !!!</p>
+        </div>
+    )
+};
+
+export default UserOutput;
+
+#######################################################
+ Add state to the app component (=> username) and pass the username to the useroutput component
+state={
+    username: "Mayu"
+}
+
+userName={this.state.username}
