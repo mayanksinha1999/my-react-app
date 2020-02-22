@@ -1,0 +1,69 @@
+1. Create TWO Components: UserInput and useroutput
+2. User input should hold an input element, user output two paragraphs
+3. Output multiple useroutput components in the app components(any paragraphs text of your choice)
+4. Pass a username of your choice to useroutput via props and idsplay it here.
+5. Add state to the app component (=> username) and pass the username to the useroutput component
+6. Add a method to manipulate the state(=> an event handler method)
+7. Pass the event handler method reference to the userotput component and bind it to the input change event
+8. Ensure that the new input enetered by the user overwrites the old username passed to the useroutput
+9. Add two-way binding to your input(in userinput) to also display the starting username
+10. Add styling to your choice to your components/elements in the components - both with inline styles/stylesheets.
+
+
+
+##########################################################################################
+*CREATING TWO COMONENTS
+*User input should hold an input element, user output two paragraphs
+*Output multiple useroutput components in the app components(any paragraphs text of your choice)
+
+UserInput.js FILE
+################################
+import React from 'react';
+
+const UserInput = () =>{
+    return <input type="text"/>
+};
+
+export default UserInput;
+####################################
+
+
+UserOutput.js FILE
+###############################
+import React from 'react';
+
+const UserOutput = () => {
+    return(
+        <div>
+            <p> Some random text</p>
+            <p> I should be over written !!!</p>
+        </div>
+    )
+};
+
+export default UserOutput;
+################################
+
+App.js FILE
+################################
+import React, { Component } from 'react';
+import './App.css';
+// import Person from './Person/Person.js';
+
+import UserInput from'./UserInput/UserInput';
+import UserOutput from'./UserOutput/UserOutput';
+
+class App extends Component{
+  render(){
+    return(
+      <div className="App">
+        <UserInput/>
+        <UserOutput/>
+        <UserOutput/>
+        <UserOutput/>
+      </div>
+    )
+  }
+};
+export default App;
+###############################
